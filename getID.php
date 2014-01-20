@@ -1,13 +1,10 @@
 <?php
 
-/*This page, GetUserID, returns the user_id associated with a specific email address, 
- * which is entered as the only argument. As discussed in one of our meetings, 
- * this is probably incredibly bad practice and should be changed during our second
- * revision once we start adding Google authentication.
- * 
- */
-//Password removed since code is publicly viewable on GitHub. Code will NOT
-//Work without filling in the connection first!
+/*This page, GetUserID, takes a single argument: email. It then returns the user
+ * id that is associated with the email. 
+ * Connecting to the actual database has been withdrawn, since this will be publicly
+ * visible on github.
+*/
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 $query = "SELECT u.user_id, u.email FROM Users u WHERE u.email=".$_GET["email"];
 if (!$connection) {
@@ -20,7 +17,7 @@ if (!mysql_select_db("Capstone")) {
 }
 
 $result = mysql_query($query);
-if (!$result) {
+if (!$result) { //Email is probably not present in our database if you get this.
     echo "Unable to run query \"".$query." from database: ". mysql_error();
     exit;
 }

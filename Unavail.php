@@ -1,11 +1,9 @@
 <?php
 /*This page, Unavail.php, is used to create a unavailable time listing. 
-//It requires 3 arguments; the user id of the person making the entry as well
-//as the start and end time of the unavailable period.
+ * It requires the user_id of the person you wish to see unavailable times for.
+ * Connecting to the actual database has been withdrawn, since this will be publicly
+ * visible on github.
 */
-
-//Password removed since code is publicly viewable on GitHub. Code will NOT
-//Work without filling in the connection first!
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 $query = "SELECT e.unavailable_start, e.unavailable_end FROM Events e WHERE "
         ."e.user_id_e =".$_GET["user_id"];
@@ -20,7 +18,7 @@ if (!mysql_select_db("Capstone")) {
 }
 
 $result = mysql_query($query);
-
+//Something went wrong. 
 if (!$result) {
     echo "Unable to run query \"".$query." from database: ". mysql_error();
     exit;
