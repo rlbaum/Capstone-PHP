@@ -10,9 +10,9 @@
  * visible on github.
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
-$query = "INSERT INTO Meetings (owner, start, end, location) VALUES ("
-         .$_GET["owner"].", ".$_GET["start"].", ".$_GET["end"].", "
-        .$_GET["location"].")";
+$query = "INSERT INTO Meetings (meeting_id, owner, start, end, created, location) VALUES ("
+         ."NULL".", ".$_GET["owner"].", ".$_GET["start"].", ".$_GET["end"].", "
+        ."CURRENT_TIMESTAMP".", ".$_GET["location"].")";
 
  if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
