@@ -24,7 +24,7 @@ if (!$result) {
     exit;
 }
  else {
-     echo "Success";
+     echo "Success\n";
  }
 mysql_free_result($result);
 ?>}

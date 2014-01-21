@@ -25,7 +25,7 @@ if (!$result) { //Invalid formatting, or the contact didn't exist in the DB.
     exit;
 }
 else {
-	echo "Success.";
+	echo "Success.\n";
 }
 mysql_free_result($result);
 ?>}

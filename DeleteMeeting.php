@@ -22,7 +22,7 @@ if (!$result) { //Something broke. Check the formatting of all arguments.
     exit;
 }
 else {
-	echo "Success.";
+	echo "Success.\n";
 }
 mysql_free_result($result);
 ?>}
