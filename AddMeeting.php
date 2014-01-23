@@ -28,6 +28,8 @@ if (!$result) { //Something broke. Check the formatting of all arguments.
     echo "Unable to run query \"".$query." from database: ". mysql_error();
     exit;
 }
+//TO Be Done: Modify this section to return the meeting_id of the newly created
+//Meeting so that contacts can be easily invited
 else {
 	echo "Success.\n";
 }
