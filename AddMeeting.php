@@ -14,6 +14,7 @@ $query = "INSERT INTO Meetings (meeting_id, owner, start, end, created, descript
          ."NULL".", ".$_GET["owner"].", ".$_GET["start"].", ".$_GET["end"].", "
         ."CURRENT_TIMESTAMP".", ".$_GET["description"].")";
 
+
  if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
     exit;
