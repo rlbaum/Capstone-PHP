@@ -4,15 +4,15 @@
  *      owner: the user id of the user creating the meeting
  *      start: datetime value of the startpoint of the meeting
  *      end: datetime value of the endpoint of the meeting
- *      location: a string of up to 128 characters that describes the meeting and
+ *      description: a string of up to 256 characters that describes the meeting and
  *          where it will be held. 
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
-$query = "INSERT INTO Meetings (meeting_id, owner, start, end, created, location) VALUES ("
+$query = "INSERT INTO Meetings (meeting_id, owner, start, end, created, description) VALUES ("
          ."NULL".", ".$_GET["owner"].", ".$_GET["start"].", ".$_GET["end"].", "
-        ."CURRENT_TIMESTAMP".", ".$_GET["location"].")";
+        ."CURRENT_TIMESTAMP".", ".$_GET["description"].")";
 
  if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
