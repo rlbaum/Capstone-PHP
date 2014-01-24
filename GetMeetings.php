@@ -12,7 +12,7 @@ $connection = mysql_connect("localhost", "root", "PASSWORD");
 //This query will find all meetings that the supplied user is attending, then 
 //match that with information about the meeting itself and the person running the 
 //meeting. 
-$query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.location
+$query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description
 FROM Users U, Meetings M, Attendees A
 WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND M.owner = U.user_id";
 if (!$connection) {
@@ -37,7 +37,7 @@ while ($row = mysql_fetch_assoc($result)) {
     echo $row["start"]."\n";
     echo $row["end"]."\n";
     echo $row["created"]."\n";
-    echo $row["location"]."\n";
+    echo $row["description"]."\n";
 }
 mysql_free_result($result);
 ?>}

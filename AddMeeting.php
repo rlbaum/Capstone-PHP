@@ -28,10 +28,21 @@ if (!$result) { //Something broke. Check the formatting of all arguments.
     echo "Unable to run query \"".$query." from database: ". mysql_error();
     exit;
 }
-//TO Be Done: Modify this section to return the meeting_id of the newly created
-//Meeting so that contacts can be easily invited
-else {
-	echo "Success.\n";
+else { //The query was a success, so we need to return the meeting_id of the newly created meeting
+    //This query will get the meeting id of the most recently created meeting for the supplied user
+    $query = "SELECT meeting_id from Meetings where owner =".$_GET["owner"]
+            ." order by meeting_id desc limit 1";
+    $id_result = mysql_query($query);
+    if (!$id_result) { //for some reason, our query above was unsuccessful 
+        echo "Meeting was created, but something failed when we tried to retrieve"
+        . " the meeting_id.\n".mysql_error();
+        exit;
+    }
+    while ($row = mysql_fetch_assoc($id_result)){
+	echo $row["meeting_id"];
+	}
 }
+echo "\n";
 mysql_free_result($result);
+mysql_free_result($id_result);
 ?>}
