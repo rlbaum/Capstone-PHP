@@ -10,9 +10,7 @@ $friendID;
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 //This query will give us the user id associated with an email
 $idQuery = "SELECT u.user_id FROM Users u WHERE u.email=".$_GET["email"];
-//This query will add a new contact to the user's friends list'
-$query = "INSERT INTO Contacts (user_id_c, friend_id) VALUES ("
-         .$_GET["user_id"].", ".$friendID.")";
+
  
  if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
@@ -34,6 +32,9 @@ else {
     $row = mysql_fetch_assoc($idResult);
     $friendID = $row["user_id"];
 }
+//This query will add a new contact to the user's friends list'
+$query = "INSERT INTO Contacts (user_id_c, friend_id) VALUES ("
+         .$_GET["user_id"].", ".$friendID.")";
 //Now we try to add the contact to the caller's contact list.
 //If we get to this point, friendID should have a value and the query will
 //be safe to run. 
