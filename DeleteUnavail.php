@@ -6,9 +6,9 @@
  * visible on github.
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
-$query = "DELETE FROM Events e WHERE e.user_id_e = ".$_GET[user_id].
-        " AND e.unavailable_start = ".$_GET["start"].
-        " AND e.unavailable_end = ". $_GET["end"]. " LIMIT 1";
+$query = "DELETE FROM Events WHERE user_id_e = ".$_GET[user_id].
+        " AND unavailable_start = ".$_GET["start"].
+        " AND unavailable_end = ". $_GET["end"]. " LIMIT 1";
 if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
     exit;
