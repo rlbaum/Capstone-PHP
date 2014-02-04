@@ -7,7 +7,6 @@
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 $idquery = "SELECT a.user_id FROM Attendees a WHERE a.meeting_id=".$_GET['meeting_id'];
-$infoquery = "SELECT c.f_name, c.l_name, c.email FROM Contacts c WHERE c.user_id=".$row["user_id"];
 
 if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
@@ -25,7 +24,8 @@ if (!$result) {
 }
 
 while ($row = mysql_fetch_assoc($result)) {
-    $inforesult = mysql_query($infoquery);
+   $infoquery = "SELECT c.f_name, c.l_name, c.email FROM Contacts c WHERE c.user_id=".$row["user_id"];
+   $inforesult = mysql_query($infoquery);
     if (!$inforesult) {
 	echo "Unable to run query \"".$infoquery." from database: ". mysql_error();
         exit;
