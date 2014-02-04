@@ -1,10 +1,8 @@
 <?php
-/*This page, UpdateName.php, is used to update the visible name associated to a user id. 
- * It requires 2-3 arguments; email of user, and one or both of f_name and l_name.
- *
+/*This page, AttendMeeting.php, is used to update the visible name associated to a user id. 
+ * It requires 2 arguments: meeting_id and user_id
  */
 
-$fname, $lname;
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 //This query will give us the user id associated with an email
 $query="INSERT INTO Attendees (meeting_id, user_id) VALUES (".$_GET["meeting_id"].", ".$_GET["user_id"].")";
@@ -28,4 +26,3 @@ else {
 }
 mysql_free_result($result);
 ?>}
-
